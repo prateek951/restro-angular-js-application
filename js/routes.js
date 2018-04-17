@@ -20,16 +20,16 @@ app.config(($routeProvider, $locationProvider) => {
       templateUrl: "our-story.html"
     })
     .when("/blog", {
-      template: "blog1.html"
+      templateUrl: "blog1.html"
     })
     .when("/blog2", {
-      template: "blog2.html"
+      templateUrl: "blog2.html"
     })
     .when("/contact-us", {
-      template: "contact-us.html"
+      templateUrl: "contact-us.html"
     })
     .when("/shop", {
-      template: "shop.html"
+      templateUrl: "shop.html"
     })
     .otherwise({
       redirectTo: "/"

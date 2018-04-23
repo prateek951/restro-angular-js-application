@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
     <link rel="icon" type="image/png" href="images/favicon-pearl.png">
     <!--main file-->
     <link href="css/pearl-restaurant.css" rel="stylesheet" type="text/css">
@@ -38,10 +40,10 @@
     <!--switcher-->
     <link href="css/switcher.css" rel="stylesheet" type="text/css">
 
-    <script src="js/angular.min.js"></script>
-    <script src="js/angular-route.min.js"></script>
     <script src="js/app.js"></script>
+    <script src-"js/value.js"></script>
     <script src="js/controllers/indexController.js"></script>
+    <script src="js/controllers/foodController.js"></script>
     <script src="js/factory.js"></script>
     <script src="js/routes.js"></script>
 </head>
@@ -156,7 +158,7 @@
                                     <ul class="submenu">
                                         <li>
                                             <a ng-href="#/contact-us">contact-us 1</a>
-                                        </li>
+                                     </li>
                                         <li>
                                             <a ng-href="#/contact-us2">contact-us 2</a>
                                            </li>
@@ -168,9 +170,9 @@
                             </ul>
                         </nav>
                         <ul class="social-icons" ng-controller="indexController">
-                            <li ng-repeat="icon in result.icons">
-                                <a ng-href="icon.icon-link">
-                                    <i ng-class="icon.icon-name"></i>
+                            <li>
+                                <a href="{{result.icon-link}}">
+                                    <i class="{{result.icon-name}}"></i>
                                 </a>
                             </li>
                             <!-- <li>
@@ -184,7 +186,7 @@
                                 </a>
                             </li> -->
                         </ul>
-                        <ul class="shop-bag">
+                        <ul class="shop-bag" ng-controller="foodController">
                             <li class="close-bag">
                                 <a class="cart-button">
                                     <i class="icon-icons163"></i>
@@ -192,30 +194,19 @@
                                 </a>
                             </li>
                             <li class="open-bag">
-                                <div class="cart-food">
+                                <div class="cart-food" ng-repeat="food in result.foods">
                                     <div class="detail">
-                                        <img src="images/cart-food1.jpg" alt="">
+                                        <img ng-src="food.locationUrl" alt="">
                                         <div class="text">
-                                            <a ng-href="#.">Blanched Garlic</a>
-                                            <p>1 x $35.00</p>
+                                            <a ng-href="#.">{{food.name}}</a>
+                                            <p>${{food.price}}</p>
                                         </div>
                                     </div>
                                     <a ng-href="#." class="cross">
                                         <i class="icon-cancel2"></i>
                                     </a>
                                 </div>
-                                <div class="cart-food">
-                                    <div class="detail">
-                                        <img src="images/cart-food2.jpg" alt="">
-                                        <div class="text">
-                                            <a ng-href="#.">GREEN CHILE </a>
-                                            <p>2 x $40.00</p>
-                                        </div>
-                                    </div>
-                                    <a ng-href="#." class="cross">
-                                        <i class="icon-cancel2"></i>
-                                    </a>
-                                </div>
+                                
                                 <div class="sub-total">
                                     <span>SUBTOTAL:
                                         <strong>$115.00</strong>

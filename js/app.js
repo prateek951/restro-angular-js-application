@@ -1,1 +1,1 @@
-const app = angular.module('restro',['ngRoute']);
+var app = angular.module('restro',['ngRoute']);

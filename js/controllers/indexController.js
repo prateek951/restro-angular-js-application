@@ -1,9 +1,18 @@
-app.controller('indexController',function($scope,JSONFactory,socialURL){
+'use strict';
 
-    var promise = JSONFactory.serverCall(socialURL);
+/**
+ * @ngdoc overview
+ * @name restroApp
+ * @description
+ * # restroApp
+ *
+ * IndexController of the Application
+ */
 
-    promise.then(data => {
-        $scope.result = data;
-    },err => console.log('an error occured while fetching the data from the resource'));
-
+app.controller("indexController", function($scope, JSONFactory, socialUrl){
+    var promise = JSONFactory.serverCall(socialUrl);
+    promise.then(data=>{
+        var SocialData = data;
+        $scope.result = SocialData.data;
+    },err=> console.log("error has occured in controller"));
 });

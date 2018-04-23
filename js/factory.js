@@ -1,7 +1,7 @@
 app.factory('JSONFactory',($http,$q) => {
 
     var factoryObject = {
-        serverCall(url) {
+        serverCall: function(url) {
             var deferred = $q.defer();
             $http.get(url).then(data => deferred.resolve(data),err => deferred.reject(err));
             return deferred.promise;

@@ -1,3 +1,13 @@
+'use strict';
+
+/**
+ * @ngdoc overview
+ * @name restroApp
+ * @description
+ * # restroApp
+ *
+ * foodController of the Application
+ */
 app.controller('foodController',($scope,JSONFactory,foodsUrl) => {
 
     var promise = JSONFactory.serverCall(foodsUrl);

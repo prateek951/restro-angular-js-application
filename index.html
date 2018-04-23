@@ -42,8 +42,12 @@
 
     <script src="js/app.js"></script>
     <script src-"js/value.js"></script>
+    <script src="js/controllers/menuController.js"></script>
+    <script src="js/controllers/homeLinkController.js"></script>
+    <script src="js/controllers/blogController.js"></script>
     <script src="js/controllers/indexController.js"></script>
     <script src="js/controllers/foodController.js"></script>
+    <script src="js/controllers/aboutController.js"></script>
     <script src="js/factory.js"></script>
     <script src="js/routes.js"></script>
 </head>
@@ -116,27 +120,22 @@
                             <ul class="wtf-menu">
                                 <li class="select-item">
                                     <a ng-href="#.">Home</a>
-                                    <ul class="submenu">
-                                        <li>
-                                            <a ng-href="#/index-1" class="select">Home 1</a>
-                                        </li>
-                                        <li>
-                                            <a ng-href="#/index-2">Home 2</a>
-                                        </li>
+                                    <ul class="submenu" ng-controller="homeLinkController">
+                                        <div ng-repeat="link in links">
+                                                <li>
+                                                    <a ng-href="{{link.homelink}}">{{link.hometitle}}</a>
+                                                </li>
+                                        </div>
                                     </ul>
                                 </li>
                                 <li>
                                     <a ng-href="#.">Menu</a>
-                                    <ul class="submenu">
-                                        <li>
-                                            <a ng-href="#/menu">menu 1</a>
-                                        </li>
-                                        <li>
-                                            <a ng-href="#/menu2">menu 2</a>
-                                        </li>
-                                        <li>
-                                            <a ng-href="#/menu3">menu 3</a>
-                                        </li>
+                                    <ul class="submenu" ng-controller="menuController">
+                                        <div ng-repeat="menu in menus">
+                                                <li>
+                                                    <a ng-href="{{menu.menulink}}">{{menu.menutitle}}</a>
+                                                </li>
+                                        </div>
                                     </ul>
                                 </li>
                                 <li>
@@ -144,29 +143,33 @@
                                 </li>
                                 <li class="parent">
                                     <a ng-href="#.">Blog</a>
-                                    <ul class="submenu">
-                                        <li>
-                                            <a ng-href="#/blog">blog 1</a>
-                                        </li>
-                                        <li>
-                                            <a ng-href="#/blog2">blog 2</a>
-                                        </li>
+                                    <ul class="submenu" ng-controller="blogController">
+                                        <div ng-repeat="blog in blogs">
+                                            <li>
+                                                <a ng-href="{{blog.bloglink}}">{{blog.blogtitle}}</a>
+                                            </li>
+                                        </div>
+                                        
                                     </ul>
                                 </li>
-                                <li>
-                                    <a ng-href="#.">contact us</a>
+                                <li ng-controller="aboutController">
+                                    <a href="#.">Contact Us</a>
                                     <ul class="submenu">
-                                        <li>
-                                            <a ng-href="#/contact-us">contact-us 1</a>
-                                     </li>
-                                        <li>
+                                            <div ng-repeat="contact in contacts">
+                                                    <li>
+                                                        <!-- <a ng-href="#/contact-us">contact-us 1</a> -->
+                                                        <a ng-href="{{contact.link}}">{{contact.head}}</a>
+                                                     </li>
+                                            </div>  
+                                            
+                                    <!-- <li>
                                             <a ng-href="#/contact-us2">contact-us 2</a>
-                                           </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a ng-href="#/shop">online order</a>
-                                </li>
+                                           </li> -->
+                                    </ul> 
+                                 </li>
+                                    <li>
+                                        <a ng-href="#/shop">online order</a>
+                                    </li>
                             </ul>
                         </nav>
                         <ul class="social-icons" ng-controller="indexController">
@@ -196,7 +199,7 @@
                             <li class="open-bag">
                                 <div class="cart-food" ng-repeat="food in result.foods">
                                     <div class="detail">
-                                        <img ng-src="food.locationUrl" alt="">
+                                        <img ng-src="{{food.locationUrl}}" alt="">
                                         <div class="text">
                                             <a ng-href="#.">{{food.name}}</a>
                                             <p>${{food.price}}</p>

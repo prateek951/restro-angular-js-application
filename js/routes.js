@@ -1,4 +1,4 @@
-app.config(($routeProvider, $locationProvider) => {
+app.config(function($routeProvider, $locationProvider){
   $locationProvider.hashPrefix("");
   $routeProvider
     .when("/index-1", {
@@ -30,6 +30,9 @@ app.config(($routeProvider, $locationProvider) => {
     })
     .when("/shop", {
       templateUrl: "shop.html"
+    })
+    .when("/login",{
+      templateUrl : "login.html"
     })
     .otherwise({
       redirectTo: "/"

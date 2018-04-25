@@ -9,10 +9,21 @@
  * IndexController of the Application
  */
 
-app.controller("indexController", function($scope, JSONFactory, socialUrl){
-    var promise = JSONFactory.serverCall(socialUrl);
-    promise.then(data=>{
-        var SocialData = data;
-        $scope.result = SocialData.data;
-    },err=> console.log("error has occured in controller"));
-});
+app.controller('indexController',function($scope,JSONFactory,socialUrl){
+
+
+    var promise = JSONFactory.serverCall(socialUrl)
+
+    promise.then(pass,fail);
+    
+    function pass(data){
+        var social_data = data;
+        $scope.result = social_data.data;
+    }
+
+    function fail(err){
+        console.log('some error occured while fetching the data from the server');
+    }
+
+
+})

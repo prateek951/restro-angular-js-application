@@ -17,12 +17,13 @@
 							
 							<div class="social-icons">
 								<h5>Follow Along</h5>
-								<ul>
-									<li><a href="#."><i class="icon-facebook-1"></i></a></li>
-									<li><a href="#."><i class="icon-twitter-1"></i></a></li>
-									<li><a href="#."><i class="icon-google"></i></a></li>
-									<li><a href="#."><i class="icon-pinterest-p"></i></a></li>
-									<li><a href="#."><i class="icon-instagram"></i></a></li>
+								<ul ng-controller="contactSocialController">
+									<li ng-repeat="contact in contactsocials"><a ng-href="#."><i ng-class="{{contact}}"></i></a></li>
+									<!-- <li><a ng-href="#."><i class="icon-facebook-1"></i></a></li>
+									<li><a ng-href="#."><i class="icon-twitter-1"></i></a></li>
+									<li><a ng-href="#."><i class="icon-google"></i></a></li>
+									<li><a ng-href="#."><i class="icon-pinterest-p"></i></a></li>
+									<li><a ng-href="#."><i class="icon-instagram"></i></a></li> -->
 								</ul>
 							</div>
 							

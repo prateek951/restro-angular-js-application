@@ -49,6 +49,8 @@
     <script src="js/controllers/foodController.js"></script>
     <script src="js/controllers/aboutController.js"></script>
     <script src="js/controllers/contactSocialController.js"></script>
+    <script src="js/controllers/contactUsController.js"></script>
+    <script src="js/controllers/openingHourController.js"></script>
     <script src="js/factory.js"></script>
     <script src="js/routes.js"></script>
 </head>
@@ -497,38 +499,38 @@
                     <div class="row">
 
                         <div class="col-md-4">
-                            <div class="contact-us">
-                                <h4>Contact Us</h4>
+                            <div class="contact-us" ng-controller="contactUsController">
+                                <h4>{{title}}</h4>
                                 <div class="detail">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Aenean ac.</p>
+                                    <p>{{detail}}</p>
                                     <ul>
                                         <li class="phone">
                                             <i class="icon-telephone"></i>
-                                            <span>+123 55 33 444 888</span>
+                                            <span>{{contact.telephone}}</span>
                                         </li>
                                         <li class="email">
                                             <i class="icon-email-1"></i>
-                                            <span>Help@pearl.com</span>
+                                            <span>{{contact.email}}</span>
                                         </li>
                                         <li class="location">
                                             <i class="icon-home"></i>
-                                            <span>329 Queensberry Street, North Me bourne, Australia.</span>
+                                            <span>{{contact.location}}</span>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4" ng-controller="openingHourController">
                             <div class="open-hours">
-                                <h4>Opening Hour</h4>
+                                <h4>{{title}}</h4>
                                 <div class="detail">
                                     <ul>
-                                        <li>
-                                            <span class="day">Monday</span>
-                                            <span class="time">09 am - 10 pm</span>
+                                        <li ng-repeat="hour in hours">
+                                            <span class="day">{{hour.day}}</span>
+                                            <span class="time">{{hour.interval}}</span>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <span class="day">Tuesday</span>
                                             <span class="time">09 am - 10 pm</span>
                                         </li>
@@ -551,7 +553,7 @@
                                         <li>
                                             <span class="day">Sunday</span>
                                             <span class="time">Closed</span>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </div>
